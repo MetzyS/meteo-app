@@ -1,6 +1,6 @@
 const CountryTitle = (props: { country: string }) => {
   return (
-    <span className="capitalize text-neutral-700 font-semibold text-2xl">
+    <span className="capitalize text-slate-100 font-semibold text-4xl">
       {props.country}
     </span>
   );

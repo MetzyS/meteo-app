@@ -6,7 +6,13 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        heavyclouds: "url('./src/assets/heavyclouds.jpg')",
+        rainy: "url('./src/assets/rainy.jpg')",
+        rain: "url('./src/assets/rain.jpg')",
+      },
+    },
   },
   plugins: [],
 };
