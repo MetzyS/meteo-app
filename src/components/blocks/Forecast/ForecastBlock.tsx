@@ -1,6 +1,6 @@
-import DefaultBlock from "../ui/DefaultBlock";
-import ForecastHour from "../ui/ForecastHour";
-import Subtitle from "../ui/Subtitle";
+import DefaultBlock from "../../ui/DefaultBlock";
+import ForecastHour from "../../ui/ForecastHour";
+import Subtitle from "../../ui/Subtitle";
 
 const ForecastBlock = (props: {
   data: [

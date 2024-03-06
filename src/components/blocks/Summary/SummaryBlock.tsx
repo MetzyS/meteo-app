@@ -1,4 +1,4 @@
-import DefaultBlock from "../ui/DefaultBlock";
+import DefaultBlock from "../../ui/DefaultBlock";
 
 const SummaryBlock = () => {
   return (

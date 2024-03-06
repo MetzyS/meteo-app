@@ -1,5 +1,5 @@
-import CountryTitle from "../ui/CountryTitle";
-import DefaultBlock from "../ui/DefaultBlock";
+import CountryTitle from "../../ui/CountryTitle";
+import DefaultBlock from "../../ui/DefaultBlock";
 import { IoIosPartlySunny } from "react-icons/io";
 
 const CurrentWeatherBlock = (props: { className: string }) => {
