@@ -6,7 +6,7 @@ const DefaultBlock = (props: {
 }) => {
   return (
     <div
-      className={`h-fit backdrop-blur-3xl rounded-md shadow-md p-4 ${props.className}`}
+      className={`h-fit backdrop-blur-3xl rounded-2xl shadow-md p-4 ${props.className}`}
     >
       {props.children}
     </div>
