@@ -1,9 +1,7 @@
-import { ReactElement } from "react";
-
 const CurrentWeatherPlaceholder = () => {
   return (
     <div
-      className={`h-fit bg-slate-800 mt-6 rounded-2xl shadow-md p-4 animate-pulse select-none`}
+      className={`h-fit bg-slate-800 mt-6 rounded-2xl shadow-md p-4 select-none`}
     >
       <span className="capitalize text-transparent font-semibold text-4xl bg-slate-700 rounded-xl">
         Paris

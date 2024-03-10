@@ -1,22 +1,24 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Background from "./components/background/Background";
 import Searchbar from "./components/navigation/Searchbar";
-import { fetchParams } from "./data/dummy";
-import { hourlyTemps } from "./data/dummy";
-import Homepage from "./pages/Homepage";
 import HomepagePlaceholder from "./pages/HomepagePlaceholder";
+import axios from "axios";
 
 function App() {
-  const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [data, setData] = useState(undefined);
+  const [city, setCity] = useState("montpellier");
   useEffect(() => {
-    setIsLoading(true);
-    const params = fetchParams(53, 48);
-    setTimeout(() => {
+    const apiKey = import.meta.env.VITE_API_KEY;
+    const fetchData = async () => {
+      const result = await axios(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&lang=fr&appid=${apiKey}`
+      );
+      setData(result.data);
+      console.log(data);
       setIsLoading(false);
-      return;
-    }, 2000);
+    };
+    fetchData();
   }, []);
   return (
     <main className="min-h-screen p-4">
@@ -27,7 +29,8 @@ function App() {
           <HomepagePlaceholder />
         ) : (
           <>
-            <Homepage data={hourlyTemps} />
+            <span>FIN</span>
+            {/* <Homepage data={hourlyTemps} /> */}
           </>
         )}
       </div>
