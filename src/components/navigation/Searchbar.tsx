@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { CiSearch } from "react-icons/ci";
-import cities from "../../data/current.city.list.min.json";
+// import cities from "../../data/current.city.list.min.json";
+import cities from "../../data/city.list.min.json";
 
 const Searchbar = (props: { setCity: (value: string) => void }) => {
   const [searchKey, setSearchKey] = useState("");
@@ -8,7 +9,7 @@ const Searchbar = (props: { setCity: (value: string) => void }) => {
   const [showCityList, setShowCityList] = useState(false);
 
   const handleFilteredCities = (value: string) => {
-    if (value.length < 1) {
+    if (value.length < 3) {
       setFilteredCities([]);
     } else {
       setFilteredCities(
@@ -25,7 +26,8 @@ const Searchbar = (props: { setCity: (value: string) => void }) => {
         <CiSearch className="size-6 ml-2" />
         <input
           type="text"
-          className="bg-transparent border-none outline-none rounded-r-md group-hover:bg-slate-700 group-focus-within:bg-slate-700"
+          placeholder="Recherche"
+          className="bg-transparent border-none outline-none rounded-r-md group-hover:bg-slate-700 group-focus-within:bg-slate-700 placeholder:text-slate-500"
           value={searchKey}
           onChange={(e) => {
             setSearchKey(e.target.value);
