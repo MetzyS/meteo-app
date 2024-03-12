@@ -4,11 +4,12 @@ import Searchbar from "./components/navigation/Searchbar";
 import HomepagePlaceholder from "./pages/HomepagePlaceholder";
 import axios from "axios";
 import Homepage from "./pages/Homepage";
+import { WeatherDataType } from "./helpers/types";
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState();
-  const [city, setCity] = useState("montpellier");
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [data, setData] = useState<WeatherDataType>();
+  const [city, setCity] = useState<string>("montpellier");
 
   useEffect(() => {
     const apiKey = import.meta.env.VITE_API_KEY;
@@ -17,7 +18,7 @@ function App() {
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&lang=fr&appid=${apiKey}`
       );
       setData(result.data);
-      // console.log(result.data);
+      console.log(result.data);
       setIsLoading(false);
     };
     fetchData();

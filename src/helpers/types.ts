@@ -44,3 +44,25 @@ export type WeatherDataType = {
     speed: number;
   };
 };
+
+export interface City {
+  coord: {
+    lon: number;
+    lat: number;
+  };
+  country: string;
+  geoname: {
+    cl: string;
+    code: string;
+    parent: number;
+  };
+  id: number;
+  langs: any[];
+  name: string;
+  stat: {
+    level: number;
+    population: number;
+  };
+  stations: any[];
+  zoom: number;
+}

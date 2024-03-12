@@ -1,19 +1,20 @@
-import { useState } from "react";
+import { ButtonHTMLAttributes, ReactEventHandler, useState } from "react";
 import { CiSearch } from "react-icons/ci";
-// import cities from "../../data/current.city.list.min.json";
-import cities from "../../data/city.list.min.json";
+import cities from "../../data/current.city.list.min.json";
+import { City } from "../../helpers/types";
 
 const Searchbar = (props: { setCity: (value: string) => void }) => {
-  const [searchKey, setSearchKey] = useState("");
-  const [filteredCities, setFilteredCities] = useState([]);
-  const [showCityList, setShowCityList] = useState(false);
+  const typedCities: City[] = cities as City[];
+
+  const [searchKey, setSearchKey] = useState<string>("");
+  const [filteredCities, setFilteredCities] = useState<City[]>([]);
 
   const handleFilteredCities = (value: string) => {
     if (value.length < 3) {
       setFilteredCities([]);
     } else {
       setFilteredCities(
-        cities.filter((item) =>
+        typedCities.filter((item) =>
           item.name.toLowerCase().startsWith(value.toLowerCase())
         )
       );
@@ -43,9 +44,9 @@ const Searchbar = (props: { setCity: (value: string) => void }) => {
                 <button
                   type="button"
                   className="p-2 border-b border-b-slate-600 hover:bg-slate-500 w-full text-left"
-                  onClick={(e) => {
-                    setSearchKey(e.target.value);
-                    props.setCity(e.target.value);
+                  onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                    setSearchKey((e.target as HTMLButtonElement).value);
+                    props.setCity((e.target as HTMLButtonElement).value);
                     handleFilteredCities("");
                   }}
                   value={item.name}
