@@ -2,7 +2,7 @@ import { useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import cities from "../../data/current.city.list.min.json";
 
-const Searchbar = () => {
+const Searchbar = (props: { setCity: (value: string) => void }) => {
   const [searchKey, setSearchKey] = useState("");
   const [filteredCities, setFilteredCities] = useState([]);
   const [showCityList, setShowCityList] = useState(false);
@@ -43,6 +43,7 @@ const Searchbar = () => {
                   className="p-2 border-b border-b-slate-600 hover:bg-slate-500 w-full text-left"
                   onClick={(e) => {
                     setSearchKey(e.target.value);
+                    props.setCity(e.target.value);
                     handleFilteredCities("");
                   }}
                   value={item.name}

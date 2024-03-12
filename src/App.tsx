@@ -3,11 +3,13 @@ import Background from "./components/background/Background";
 import Searchbar from "./components/navigation/Searchbar";
 import HomepagePlaceholder from "./pages/HomepagePlaceholder";
 import axios from "axios";
+import Homepage from "./pages/Homepage";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState(undefined);
+  const [data, setData] = useState();
   const [city, setCity] = useState("montpellier");
+
   useEffect(() => {
     const apiKey = import.meta.env.VITE_API_KEY;
     const fetchData = async () => {
@@ -15,22 +17,22 @@ function App() {
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&lang=fr&appid=${apiKey}`
       );
       setData(result.data);
-      console.log(data);
+      // console.log(result.data);
       setIsLoading(false);
     };
     fetchData();
-  }, []);
+  }, [city]);
   return (
     <main className="min-h-screen p-4">
       <Background bg="bg-[#161E29]" />
       <div className="backdrop-blur-md">
-        <Searchbar />
+        <Searchbar setCity={setCity} />
         {isLoading ? (
           <HomepagePlaceholder />
         ) : (
           <>
-            <span>FIN</span>
-            {/* <Homepage data={hourlyTemps} /> */}
+            {/* <span>FIN</span> */}
+            <Homepage data={data} />
           </>
         )}
       </div>
