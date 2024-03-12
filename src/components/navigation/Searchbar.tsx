@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, ReactEventHandler, useState } from "react";
+import { useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import cities from "../../data/current.city.list.min.json";
 import { City } from "../../helpers/types";
