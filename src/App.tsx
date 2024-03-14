@@ -24,8 +24,8 @@ function App() {
     fetchData();
   }, [city]);
   return (
-    <main className="min-h-screen p-4">
-      <Background bg="bg-[#161E29]" />
+    <main className="min-h-screen p-4 bg-[#161E29]">
+      {/* <Background bg="bg-[#161E29]" /> */}
       <div className="backdrop-blur-md">
         <Searchbar setCity={setCity} />
         {isLoading ? (

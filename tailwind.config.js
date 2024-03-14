@@ -9,8 +9,13 @@ export default {
     extend: {
       backgroundImage: {
         heavyclouds: "url('./src/assets/heavyclouds.jpg')",
-        rainy: "url('./src/assets/rainy.jpg')",
+        partialcloud: "url('./src/assets/partialcloud.jpg')",
+        heavyrain: "url('./src/assets/heavyrain.jpg')",
         rain: "url('./src/assets/rain.jpg')",
+        fog: "url('./src/assets/fog.jpg')",
+        clear: "url('./src/assets/clear.jpg')",
+        wind: "url('./src/assets/wind.jpg')",
+        thunder: "url('./src/assets/thunder.jpg')",
       },
     },
   },

@@ -51,7 +51,8 @@ const CurrentWeatherBlock = (props: {
           <p className="text-sm font-light">{date}</p>
         </div>
         <div className="flex items-end">
-          <IoIosPartlySunny className="size-16" />
+          <div className="size-24 bg-red-500 rounded-full border-[8px] border-dashed"></div>
+          {/* <IoIosPartlySunny className="size-16" /> */}
         </div>
       </div>
     </DefaultBlock>
