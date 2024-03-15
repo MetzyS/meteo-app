@@ -145,3 +145,11 @@
   transform-origin: 14vw 8vh;
   box-shadow: -100vmin 0 13.190622188489783vmin currentColor;
 }
+
+/* gauge */
+
+.gauge {
+  border-radius: 50%;
+  background: radial-gradient(closest-side, #151820 80%, transparent 80% 100%),
+    conic-gradient(#343a4d 10%, transparent 0%);
+}

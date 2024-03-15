@@ -6,7 +6,7 @@ const Homepage = (props: { data: WeatherDataType }) => {
   return (
     <>
       <CurrentWeatherBlock
-        className="mt-6 bg-cover bg-rain"
+        className="mt-6 bg-cover bg-[#151820]"
         data={props.data}
       />
       {/* <ForecastBlock data={props.data} /> */}
