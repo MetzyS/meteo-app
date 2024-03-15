@@ -4,11 +4,11 @@ const Gauge = (props: { percent: number; width: number; height: number }) => {
   useEffect(() => {
     let needles = document.querySelectorAll("[id^=gauge-]");
     // console.log(needles);
-    for (let i = 0; i < props.percent + 1; i++) {
+    for (let i = 0; i < Math.floor(props.percent / 2) + 1; i++) {
       needles[i].classList.remove("stroke-white");
-      needles[i].classList.add("stroke-red-500");
+      needles[i].classList.add("stroke-purple-500");
     }
-  }, []);
+  }, [props.percent]);
   return (
     <svg
       id="Layer_1"
