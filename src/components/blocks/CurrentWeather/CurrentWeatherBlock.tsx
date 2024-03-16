@@ -55,13 +55,13 @@ const CurrentWeatherBlock = (props: {
           <p className="text-sm font-light">{date}</p>
         </div>
         <div className="flex items-end relative">
-          <Gauge percent={50} width={150} height={150} />
-          {/* <div className="size-28 gauge"></div> */}
-          {/* <div className="w-24 h-20 bg-gauge bg-cover absolute right-0"></div>
-          <div className="w-[50px] h-[70px] overflow-hidden -left-24 absolute">
-            <div className="w-24 h-20 bg-gaugefull bg-cover absolute bottom-0"></div>
-          </div> */}
-          {/* <IoIosPartlySunny className="size-16" /> */}
+          <Gauge percent={props.data.main.humidity} width={150} height={150} />
+          <span className="absolute mx-auto top-[50%] left-[50%] -translate-x-1/2 text-sm text-center">
+            <span className="text-xl font-bold">
+              {props.data.main.humidity + "%"}
+            </span>
+            <br /> Humidité
+          </span>
         </div>
       </div>
     </DefaultBlock>

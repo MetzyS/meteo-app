@@ -1,14 +1,21 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const Gauge = (props: { percent: number; width: number; height: number }) => {
+  const [humidity, setHumidity] = useState(0);
   useEffect(() => {
+    setHumidity(props.percent);
     let needles = document.querySelectorAll("[id^=gauge-]");
     // console.log(needles);
-    for (let i = 0; i < Math.floor(props.percent / 2) + 1; i++) {
-      needles[i].classList.remove("stroke-white");
-      needles[i].classList.add("stroke-purple-500");
+    for (let i = 0; i < needles.length / 2; i++) {
+      needles[i].classList.remove("stroke-blue-500");
+      needles[i].classList.add("stroke-white");
     }
-  }, [props.percent]);
+    for (let i = 0; i < Math.floor(humidity / 2) + 1; i++) {
+      needles[i].classList.remove("stroke-white");
+      needles[i].classList.add("stroke-blue-500");
+    }
+    console.log(humidity);
+  }, [humidity]);
   return (
     <svg
       id="Layer_1"
