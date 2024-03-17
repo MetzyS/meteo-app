@@ -16,14 +16,17 @@ function App() {
   const [forecastWeather, setForecastWeather] =
     useState<ForecastWeatherDataType>();
   const [city, setCity] = useState<string>("montpellier");
+  const [summary, setSummary] = useState("");
 
   useEffect(() => {
-    const apiKey = import.meta.env.VITE_API_KEY;
+    const apiKey = import.meta.env.VITE_API_KEY_OPENWEATHERMAP;
+    const apiKeyDeepl = import.meta.env.VITE_API_KEY_DEEPL;
     const forecastExcludeOptions = "minutely";
     const fetchData = async () => {
       const currentWeatherResult = await axios(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&lang=fr&appid=${apiKey}`
       );
+      // console.log(currentWeatherResult.data);
 
       setCurrentWeather(currentWeatherResult.data);
       const lat = currentWeatherResult.data.coord.lat;
@@ -32,9 +35,9 @@ function App() {
       const forecastWeatherResult = await axios(
         `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=${forecastExcludeOptions}&units=metric&lang=fr&appid=${apiKey}`
       );
-
       console.log(forecastWeatherResult.data);
       setForecastWeather(forecastWeatherResult.data);
+      setSummary(forecastWeatherResult.data.daily[0].summary);
       setIsLoading(false);
     };
     fetchData();
@@ -52,6 +55,7 @@ function App() {
             <Homepage
               currentWeather={currentWeather}
               forecastWeather={forecastWeather}
+              summary={summary}
             />
           </>
         )}

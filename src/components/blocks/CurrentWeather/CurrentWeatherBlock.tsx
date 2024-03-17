@@ -58,8 +58,9 @@ const CurrentWeatherBlock = (props: {
             <div className="flex items-end relative">
               <Gauge
                 percent={props.data.main.humidity}
-                width={160}
-                height={160}
+                // width={160}
+                // height={160}
+                className="size-36"
               />
               <span className="absolute mx-auto top-[50%] left-[50%] -translate-x-1/2 text-sm text-center">
                 <span className="text-xl font-bold">

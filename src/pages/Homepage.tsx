@@ -8,6 +8,7 @@ import {
 const Homepage = (props: {
   currentWeather: CurrentWeatherDataType | undefined;
   forecastWeather: ForecastWeatherDataType | undefined;
+  summary: string;
 }) => {
   return (
     <>
@@ -15,7 +16,7 @@ const Homepage = (props: {
         className="mt-6 bg-cover bg-rain"
         data={props.currentWeather}
       />
-      <ForecastBlock data={props.forecastWeather} />
+      <ForecastBlock data={props.forecastWeather} summary={props.summary} />
     </>
   );
 };

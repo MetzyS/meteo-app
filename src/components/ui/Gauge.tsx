@@ -1,6 +1,11 @@
 import { useEffect } from "react";
 
-const Gauge = (props: { percent: number; width: number; height: number }) => {
+const Gauge = (props: {
+  percent: number;
+  width?: number;
+  height?: number;
+  className?: string;
+}) => {
   useEffect(() => {
     let needles = document.querySelectorAll("[id^=gauge-]");
     for (let i = 0; i < needles.length; i++) {
@@ -19,7 +24,7 @@ const Gauge = (props: { percent: number; width: number; height: number }) => {
       viewBox="25 0 90 90"
       width={props.width}
       height={props.height}
-      className="-rotate-90 -scale-y-100"
+      className={`-rotate-90 -scale-y-100 ${props.className}`}
       data-percent="50"
     >
       <defs>
