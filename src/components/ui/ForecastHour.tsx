@@ -11,13 +11,18 @@ import { FaTornado as Tornado } from "react-icons/fa6";
 import { BsCloudSnowFill as Snow } from "react-icons/bs";
 import { FiWind as Squall } from "react-icons/fi";
 import { WiDayCloudy as FewClouds } from "react-icons/wi";
-
+import SunCloud from "./customicons/SunCloud";
+import HeavyRain from "./customicons/HeavyRain";
 import { Hourly } from "../../helpers/types";
+import LightRain from "./customicons/LighRain";
 
 const ForecastHour = (props: { data: Hourly }) => {
   let icon;
-  let iconSize = "size-5";
-  let iconColor;
+  const iconSize = "size-8";
+  const sunColor = "fill-yellow-500";
+  const rainColor = "fill-blue-300";
+  const iconColor = "fill-white";
+  const iconDarkColor = "fill-neutral-400";
   const date = new Date(props.data.dt * 1000);
   const hour = date.getHours();
 
@@ -25,75 +30,80 @@ const ForecastHour = (props: { data: Hourly }) => {
   switch (true) {
     case weatherId >= 200 && weatherId <= 233:
       // Orage
-      icon = <Thunderstorm />;
-      iconColor = "text-white";
+      icon = <Thunderstorm className={`${iconColor} ${iconSize}`} />;
       break;
     case weatherId >= 300 && weatherId <= 321:
       // Bruine (pluie fine)
-      icon = <Rain />;
-      iconColor = "text-white";
+      // icon = <Rain className={`${iconColor} ${iconSize}`} />;
+      icon = (
+        <LightRain
+          size={iconSize}
+          cloudColor={iconColor}
+          rainColor={rainColor}
+        />
+      );
       break;
     case weatherId >= 500 && weatherId <= 531:
       // Pluie
-      icon = <Rain />;
-      iconColor = "text-white";
+      icon = (
+        <HeavyRain
+          size={iconSize}
+          cloudColor={iconColor}
+          rainColor={rainColor}
+        />
+      );
+      // icon = <Rain className={`${iconDarkColor} ${iconSize}`} />;
+      icon = (
+        <HeavyRain
+          size={iconSize}
+          cloudColor={iconDarkColor}
+          rainColor={rainColor}
+        />
+      );
       break;
     case weatherId >= 600 && weatherId <= 622:
       // Neige
-      icon = <Snow />;
-      iconColor = "text-white";
+      icon = <Snow className={`${iconColor} ${iconSize}`} title="Neige" />;
       break;
     case weatherId >= 701 && weatherId <= 781:
       // Atmosphère
       if (weatherId == 701) {
         // Brume moyenne
-        icon = <Fog />;
-        iconColor = "text-white";
+        icon = <Fog className={`${iconColor} ${iconSize}`} />;
       } else if (weatherId == 711) {
         // Fumée
-        icon = <Fog />;
-        iconColor = "text-white";
+        icon = <Fog className={`${iconColor} ${iconSize}`} />;
       } else if (weatherId == 721) {
         // Brume légère
-        icon = <Fog />;
-        iconColor = "text-white";
+        icon = <Fog className={`${iconColor} ${iconSize}`} />;
       } else if (weatherId == 731) {
         // Poussière
-        icon = <Fog />;
-        iconColor = "text-white";
+        icon = <Fog className={`${iconColor} ${iconSize}`} />;
       } else if (weatherId == 741) {
         // Brume
-        icon = <Fog />;
-        iconColor = "text-white";
+        icon = <Fog className={`${iconColor} ${iconSize}`} />;
       } else if (weatherId == 751) {
         // Sable
-        icon = <Fog />;
-        iconColor = "text-white";
+        icon = <Fog className={`${iconColor} ${iconSize}`} />;
       } else if (weatherId == 761) {
         // Poussière
-        icon = <Fog />;
-        iconColor = "text-white";
+        icon = <Fog className={`${iconColor} ${iconSize}`} />;
       } else if (weatherId == 762) {
         // Cendre volcanique
-        icon = <Fog />;
-        iconColor = "text-white";
+        icon = <Fog className={`${iconColor} ${iconSize}`} />;
       } else if (weatherId == 771) {
         // Bourrasque
-        icon = <Squall />;
-        iconColor = "text-white";
+        icon = <Squall className={`${iconColor} ${iconSize}`} />;
       } else if (weatherId == 781) {
         // Tornade
-        icon = <Tornado />;
-        iconColor = "text-white";
+        icon = <Tornado className={`${iconColor} ${iconSize}`} />;
       } else {
         // Pas d'infos particulière, atmosphère chargée
-        icon = <Fog />;
-        iconColor = "text-white";
+        icon = <Fog className={`${iconColor} ${iconSize}`} />;
       }
       break;
     case weatherId == 800:
-      icon = <Sun />;
-      iconColor = "text-yellow-500";
+      icon = <Sun className={`${sunColor} ${iconSize}`} />;
       // Ciel dégagé
 
       break;
@@ -101,37 +111,45 @@ const ForecastHour = (props: { data: Hourly }) => {
       // Nuages
       if (weatherId == 801) {
         // Peu de nuages (11-25%)
-        icon = <FewClouds />;
-        iconColor = "text-white";
+        // icon = <FewClouds className={`${iconColor} ${iconSize}`} />;
+        icon = (
+          <SunCloud
+            size={iconSize}
+            sunColor={sunColor}
+            cloudColor={iconColor}
+          />
+        );
       } else if (weatherId == 802) {
         // Nuages dispersés (25-50%)
-        icon = <FewClouds />;
-        iconColor = "text-white";
+        icon = (
+          <SunCloud
+            size={iconSize}
+            sunColor={sunColor}
+            cloudColor={iconColor}
+          />
+        );
       } else if (weatherId == 803) {
         // Nuages morcelés (51-84%)
-        icon = <Cloud />;
-        iconColor = "text-white";
+        icon = <Cloud className={`${iconColor} ${iconSize}`} />;
       } else if (weatherId == 804) {
         // Ciel couvert (85-100%)
-        icon = <Cloud />;
-        iconColor = "text-white";
+        icon = <Cloud className={`${iconDarkColor} ${iconSize}`} />;
       } else {
-        icon = <Cloud />;
-        iconColor = "text-white";
+        icon = <Cloud className={`${iconColor} ${iconSize}`} />;
       }
       break;
   }
-  console.log(props.data.weather[0]);
+  // console.log(props.data.weather[0]);
   return (
     <div className="flex flex-col gap-2 px-3 py-3 text-sm font-normal text-slate-500 items-center cursor-default justify-center">
-      <span>{hour}</span>
+      <span>{hour}h</span>
       <span className="text-slate-100 text-xs">
         <span className="font-semibold text-sm">
           {Math.floor(props.data.temp)}
         </span>
         °
       </span>
-      <span className={iconColor}>{icon}</span>
+      <span className={`${iconColor}`}>{icon}</span>
     </div>
   );
 };
