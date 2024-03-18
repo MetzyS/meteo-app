@@ -1,5 +1,6 @@
 import CurrentWeatherBlock from "../components/blocks/CurrentWeather/CurrentWeatherBlock";
-import ForecastBlock from "../components/blocks/Forecast/ForecastBlock";
+import DailyForecastBlock from "../components/blocks/Forecast/DailyForecast";
+import HourlyForecastBlock from "../components/blocks/Forecast/HourlyForecastBlock";
 import {
   CurrentWeatherDataType,
   ForecastWeatherDataType,
@@ -16,7 +17,11 @@ const Homepage = (props: {
         className="mt-6 bg-cover bg-rain"
         data={props.currentWeather}
       />
-      <ForecastBlock data={props.forecastWeather} summary={props.summary} />
+      <HourlyForecastBlock
+        data={props.forecastWeather}
+        summary={props.summary}
+      />
+      <DailyForecastBlock />
     </>
   );
 };
