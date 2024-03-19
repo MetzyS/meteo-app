@@ -6,6 +6,8 @@ import Subtitle from "../../ui/Subtitle";
 const HourlyForecastBlock = (props: {
   data: ForecastWeatherDataType | undefined;
   summary: string;
+  sunrise: number;
+  sunset: number;
 }) => {
   return (
     <>
@@ -14,7 +16,12 @@ const HourlyForecastBlock = (props: {
           <Subtitle title={props.summary} />
           <div className="flex my-2 overflow-x-scroll scrollbar-hide">
             {props.data.hourly.map((item, index) => (
-              <ForecastHour data={item} key={index} />
+              <ForecastHour
+                data={item}
+                key={index}
+                sunrise={props.sunrise}
+                sunset={props.sunset}
+              />
             ))}
           </div>
         </DefaultBlock>

@@ -5,11 +5,20 @@ import { MdFoggy as Fog } from "react-icons/md";
 import { FaTornado as Tornado } from "react-icons/fa6";
 import { BsCloudSnowFill as Snow } from "react-icons/bs";
 import { FiWind as Squall } from "react-icons/fi";
+import { BsFillSunriseFill } from "react-icons/bs";
+import { BsFillSunsetFill } from "react-icons/bs";
 import SunCloud from "./SunCloud";
 import HeavyRain from "./HeavyRain";
 import LightRain from "./LighRain";
 
-const AutomaticForecastIcon = (props: { weatherId: number; size?: string }) => {
+const AutomaticForecastIcon = (props: {
+  weatherId: number;
+  size?: string;
+  sunrise?: number;
+  sunset?: number;
+  hour?: number;
+}) => {
+  // console.log(props.sunrise);
   let icon = <Sun />;
   let iconSize;
   if (props.size) {
@@ -134,6 +143,16 @@ const AutomaticForecastIcon = (props: { weatherId: number; size?: string }) => {
         icon = <Cloud className={`${iconColor} ${iconSize}`} />;
       }
       break;
+  }
+  if (props.sunrise && props.sunset) {
+    const sunrise = new Date(props.sunrise * 1000).getHours();
+    const sunset = new Date(props.sunset * 1000).getHours();
+    if (props.hour === sunrise) {
+      icon = <BsFillSunriseFill className={`${iconSize} fill-amber-600`} />;
+    }
+    if (props.hour === sunset) {
+      icon = <BsFillSunsetFill className={`${iconSize} fill-amber-600`} />;
+    }
   }
   return <>{icon}</>;
 };

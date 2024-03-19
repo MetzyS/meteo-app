@@ -11,6 +11,12 @@ const Homepage = (props: {
   forecastWeather: ForecastWeatherDataType | undefined;
   summary: string;
 }) => {
+  let sunrise = 0;
+  let sunset = 0;
+  if (props.forecastWeather) {
+    sunrise = props.forecastWeather.current.sunrise;
+    sunset = props.forecastWeather.current.sunset;
+  }
   return (
     <>
       <CurrentWeatherBlock
@@ -20,6 +26,8 @@ const Homepage = (props: {
       <HourlyForecastBlock
         data={props.forecastWeather}
         summary={props.summary}
+        sunrise={sunrise}
+        sunset={sunset}
       />
       <DailyForecastBlock data={props.forecastWeather.daily} />
     </>

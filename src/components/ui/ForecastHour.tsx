@@ -3,7 +3,11 @@ import { Hourly } from "../../helpers/types";
 
 import AutomaticForecastIcon from "./customicons/AutomaticForecastIcon";
 
-const ForecastHour = (props: { data: Hourly }) => {
+const ForecastHour = (props: {
+  data: Hourly;
+  sunrise?: number;
+  sunset?: number;
+}) => {
   const hour = datetimeToHour(props.data.dt);
   return (
     <div className="flex flex-col gap-2 px-3 py-3 text-sm font-normal text-slate-500 items-center cursor-default justify-center">
@@ -15,7 +19,12 @@ const ForecastHour = (props: { data: Hourly }) => {
         °
       </span>
       <span>
-        <AutomaticForecastIcon weatherId={props.data.weather[0].id} />
+        <AutomaticForecastIcon
+          weatherId={props.data.weather[0].id}
+          sunrise={props.sunrise}
+          sunset={props.sunset}
+          hour={hour}
+        />
       </span>
     </div>
   );
