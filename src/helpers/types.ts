@@ -74,7 +74,7 @@ interface DefaultWeather {
   icon: string;
 }
 
-interface Daily {
+export type Daily = {
   clouds: number;
   dew_point: number;
   dt: number;
@@ -98,6 +98,7 @@ interface Daily {
     day: number;
     eve: number;
     min: number;
+    max: number;
     morn: number;
     night: number;
   };
@@ -106,7 +107,7 @@ interface Daily {
   wind_deg: number;
   wind_gust: number;
   wind_speed: number;
-}
+};
 
 export interface Hourly {
   clouds: number;

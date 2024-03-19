@@ -21,7 +21,7 @@ const Homepage = (props: {
         data={props.forecastWeather}
         summary={props.summary}
       />
-      <DailyForecastBlock />
+      <DailyForecastBlock data={props.forecastWeather.daily} />
     </>
   );
 };

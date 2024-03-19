@@ -1,3 +1,4 @@
+import { currentDate } from "../../../helpers/dateParser";
 import { CurrentWeatherDataType } from "../../../helpers/types";
 import CountryTitle from "../../ui/CountryTitle";
 import DefaultBlock from "../../ui/DefaultBlock";
@@ -7,24 +8,6 @@ const CurrentWeatherBlock = (props: {
   className: string;
   data: CurrentWeatherDataType | undefined;
 }) => {
-  const currentDate = () => {
-    const today = new Date();
-    const months = "0" + (today.getMonth() + 1);
-    const hours = "0" + today.getHours();
-    const minutes = "0" + today.getMinutes();
-    const fullDate =
-      today.getDate() +
-      "/" +
-      months.slice(-2) +
-      "/" +
-      today.getFullYear() +
-      " " +
-      hours.slice(-2) +
-      "h" +
-      minutes.slice(-2);
-    return fullDate;
-  };
-
   const date = currentDate();
   return (
     <>

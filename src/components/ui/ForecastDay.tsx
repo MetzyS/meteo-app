@@ -1,20 +1,23 @@
-import HeavyRain from "./customicons/HeavyRain";
-const ForecastDay = () => {
+import { datetimeToDay } from "../../helpers/dateParser";
+import { Daily } from "../../helpers/types";
+import AutomaticForecastIcon from "./customicons/AutomaticForecastIcon";
+const ForecastDay = (props: { data: Daily }) => {
+  // console.log(props.data);
+  const day = datetimeToDay(props.data.dt);
   return (
-    <li className="flex font-semibold justify-between text-sm items-center">
-      <span className="text-white">Today</span>
+    <>
+      <span className="text-white w-20">{day}</span>
       <span>
-        <HeavyRain
+        <AutomaticForecastIcon
+          weatherId={props.data.weather[0].id}
           size="size-6"
-          cloudColor="fill-white"
-          rainColor="fill-blue-300"
         />
       </span>
-      <span className="text-slate-400">23%</span>
-      <span className="text-slate-400">5°</span>
-      <span className="text-blue-600">BLABLA</span>
-      <span className="text-white">6°</span>
-    </li>
+      <span className="text-slate-400">{props.data.humidity}%</span>
+      <span className="text-slate-400">{Math.floor(props.data.temp.min)}°</span>
+      <span className="hidden sm:block text-blue-600">BLABLA</span>
+      <span className="text-white">{Math.floor(props.data.temp.max)}°</span>
+    </>
   );
 };
 
