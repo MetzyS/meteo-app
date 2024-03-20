@@ -148,10 +148,10 @@ const AutomaticForecastIcon = (props: {
     const sunrise = new Date(props.sunrise * 1000).getHours();
     const sunset = new Date(props.sunset * 1000).getHours();
     if (props.hour === sunrise) {
-      icon = <BsFillSunriseFill className={`${iconSize} fill-amber-600`} />;
+      icon = <BsFillSunriseFill className={`${iconSize} fill-amber-500`} />;
     }
     if (props.hour === sunset) {
-      icon = <BsFillSunsetFill className={`${iconSize} fill-amber-600`} />;
+      icon = <BsFillSunsetFill className={`${iconSize} fill-amber-500`} />;
     }
   }
   return <>{icon}</>;
