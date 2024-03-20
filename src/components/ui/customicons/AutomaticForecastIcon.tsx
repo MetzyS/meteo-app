@@ -7,9 +7,12 @@ import { BsCloudSnowFill as Snow } from "react-icons/bs";
 import { FiWind as Squall } from "react-icons/fi";
 import { BsFillSunriseFill } from "react-icons/bs";
 import { BsFillSunsetFill } from "react-icons/bs";
+import { IoMoonSharp as Moon } from "react-icons/io5";
 import SunCloud from "./SunCloud";
 import HeavyRain from "./HeavyRain";
 import LightRain from "./LighRain";
+import isDay from "../../../helpers/isDay";
+import MoonCloud from "./MoonCloud";
 
 const AutomaticForecastIcon = (props: {
   weatherId: number;
@@ -27,11 +30,12 @@ const AutomaticForecastIcon = (props: {
     iconSize = "size-8";
   }
   const sunColor = "fill-yellow-500";
+  const moonColor = "fill-zinc-300";
   const rainColor = "fill-blue-300";
   const iconColor = "fill-white";
   const iconDarkColor = "fill-neutral-400";
-
   const weatherId = props.weatherId;
+
   switch (true) {
     case weatherId >= 200 && weatherId <= 233:
       // Orage
@@ -110,7 +114,14 @@ const AutomaticForecastIcon = (props: {
     case weatherId == 800:
       icon = <Sun className={`${sunColor} ${iconSize}`} />;
       // Ciel dégagé
-
+      if (props.sunrise && props.sunset && props.hour) {
+        const hourSunRise = new Date(props.sunrise * 1000).getHours();
+        const hourSunset = new Date(props.sunset * 1000).getHours();
+        const dayTime = isDay(props.hour, hourSunRise, hourSunset);
+        if (!dayTime) {
+          icon = <Moon className={`${moonColor} ${iconSize}`} />;
+        }
+      }
       break;
     case weatherId >= 801 && weatherId <= 804:
       // Nuages
@@ -124,6 +135,20 @@ const AutomaticForecastIcon = (props: {
             cloudColor={iconColor}
           />
         );
+        if (props.sunrise && props.sunset && props.hour) {
+          const hourSunRise = new Date(props.sunrise * 1000).getHours();
+          const hourSunset = new Date(props.sunset * 1000).getHours();
+          const dayTime = isDay(props.hour, hourSunRise, hourSunset);
+          if (!dayTime) {
+            icon = (
+              <MoonCloud
+                className={iconSize}
+                moonColor={moonColor}
+                cloudColor={iconColor}
+              />
+            );
+          }
+        }
       } else if (weatherId == 802) {
         // Nuages dispersés (25-50%)
         icon = (
@@ -133,14 +158,70 @@ const AutomaticForecastIcon = (props: {
             cloudColor={iconColor}
           />
         );
+        if (props.sunrise && props.sunset && props.hour) {
+          const hourSunRise = new Date(props.sunrise * 1000).getHours();
+          const hourSunset = new Date(props.sunset * 1000).getHours();
+          const dayTime = isDay(props.hour, hourSunRise, hourSunset);
+          if (!dayTime) {
+            icon = (
+              <MoonCloud
+                className={iconSize}
+                moonColor={moonColor}
+                cloudColor={iconColor}
+              />
+            );
+          }
+        }
       } else if (weatherId == 803) {
         // Nuages morcelés (51-84%)
         icon = <Cloud className={`${iconColor} ${iconSize}`} />;
+        if (props.sunrise && props.sunset && props.hour) {
+          const hourSunRise = new Date(props.sunrise * 1000).getHours();
+          const hourSunset = new Date(props.sunset * 1000).getHours();
+          const dayTime = isDay(props.hour, hourSunRise, hourSunset);
+          if (!dayTime) {
+            icon = (
+              <MoonCloud
+                className={iconSize}
+                moonColor={moonColor}
+                cloudColor={iconColor}
+              />
+            );
+          }
+        }
       } else if (weatherId == 804) {
         // Ciel couvert (85-100%)
         icon = <Cloud className={`${iconDarkColor} ${iconSize}`} />;
+        if (props.sunrise && props.sunset && props.hour) {
+          const hourSunRise = new Date(props.sunrise * 1000).getHours();
+          const hourSunset = new Date(props.sunset * 1000).getHours();
+          const dayTime = isDay(props.hour, hourSunRise, hourSunset);
+          if (!dayTime) {
+            icon = (
+              <MoonCloud
+                className={iconSize}
+                moonColor={moonColor}
+                cloudColor={iconDarkColor}
+              />
+            );
+          }
+        }
       } else {
         icon = <Cloud className={`${iconColor} ${iconSize}`} />;
+        if (props.sunrise && props.sunset && props.hour) {
+          const hourSunRise = new Date(props.sunrise * 1000).getHours();
+          const hourSunset = new Date(props.sunset * 1000).getHours();
+          const dayTime = isDay(props.hour, hourSunRise, hourSunset);
+          if (!dayTime) {
+            icon = (
+              <MoonCloud
+                className={iconSize}
+                moonColor={moonColor}
+                cloudColor={iconColor}
+              />
+            );
+          }
+        }
       }
       break;
   }

@@ -21,7 +21,7 @@ const DailyForecastBlock = (props: { data: Daily[] | undefined }) => {
                 key={index}
                 className="flex font-semibold justify-between text-sm items-center"
               >
-                <ForecastDay data={item} />
+                <ForecastDay data={item} index={index} />
               </li>
             ))}
           </ul>
