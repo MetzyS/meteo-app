@@ -7,7 +7,6 @@ const LineGauge = (props: { percent: number; index: number }) => {
       needles[i].classList.remove("stroke-blue-500");
       needles[i].classList.add("stroke-slate-600");
     }
-    console.log(needles.length);
     for (
       let i = 0;
       i < Math.floor(needles.length * (props.percent / 100)) + 1;
@@ -18,12 +17,7 @@ const LineGauge = (props: { percent: number; index: number }) => {
     }
   });
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 100 20"
-      width={115}
-      //   height={10}
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20" width={115}>
       <g>
         <path
           d="M2 0v20"

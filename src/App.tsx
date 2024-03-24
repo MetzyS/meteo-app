@@ -20,7 +20,6 @@ function App() {
 
   useEffect(() => {
     const apiKey = import.meta.env.VITE_API_KEY_OPENWEATHERMAP;
-    const apiKeyDeepl = import.meta.env.VITE_API_KEY_DEEPL;
     const forecastExcludeOptions = "minutely";
     const fetchData = async () => {
       const currentWeatherResult = await axios(
@@ -35,7 +34,7 @@ function App() {
       const forecastWeatherResult = await axios(
         `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=${forecastExcludeOptions}&units=metric&lang=fr&appid=${apiKey}`
       );
-      console.log(forecastWeatherResult.data);
+      // console.log(forecastWeatherResult.data);
       setForecastWeather(forecastWeatherResult.data);
       setSummary(forecastWeatherResult.data.daily[0].summary);
       setIsLoading(false);
@@ -51,7 +50,6 @@ function App() {
           <HomepagePlaceholder />
         ) : (
           <>
-            {/* <span>FIN</span> */}
             <Homepage
               currentWeather={currentWeather}
               forecastWeather={forecastWeather}
