@@ -15,11 +15,11 @@ const DailyForecastBlock = (props: { data: Daily[] | undefined }) => {
             title="prévisions hebdomadaire"
             className="uppercase"
           />
-          <ul className="flex flex-col gap-3 my-4">
+          <ul className="flex flex-col mt-3">
             {props.data.map((item, index) => (
               <li
                 key={index}
-                className="flex font-semibold justify-between text-sm items-center"
+                className="flex font-semibold justify-between text-sm items-center py-1.5 hover:bg-slate-600/30 rounded-md cursor-default"
               >
                 <ForecastDay data={item} index={index} />
               </li>
