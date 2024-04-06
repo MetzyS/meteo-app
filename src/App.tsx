@@ -25,7 +25,6 @@ function App() {
       const currentWeatherResult = await axios(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&lang=fr&appid=${apiKey}`
       );
-      // console.log(currentWeatherResult.data);
 
       setCurrentWeather(currentWeatherResult.data);
       const lat = currentWeatherResult.data.coord.lat;
@@ -34,7 +33,6 @@ function App() {
       const forecastWeatherResult = await axios(
         `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=${forecastExcludeOptions}&units=metric&lang=fr&appid=${apiKey}`
       );
-      // console.log(forecastWeatherResult.data);
       setForecastWeather(forecastWeatherResult.data);
       setSummary(forecastWeatherResult.data.daily[0].summary);
       setIsLoading(false);

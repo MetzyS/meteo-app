@@ -21,7 +21,6 @@ const AutomaticForecastIcon = (props: {
   sunset?: number;
   hour?: number;
 }) => {
-  // console.log(props.sunrise);
   let icon = <Sun />;
   let iconSize;
   if (props.size) {

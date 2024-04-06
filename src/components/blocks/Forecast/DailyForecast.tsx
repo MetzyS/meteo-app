@@ -5,7 +5,6 @@ import Subtitle from "../../ui/Subtitle";
 import { RiCalendarTodoLine } from "react-icons/ri";
 
 const DailyForecastBlock = (props: { data: Daily[] | undefined }) => {
-  // console.log(props.data);
   return (
     <>
       {props.data && (

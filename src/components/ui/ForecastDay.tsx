@@ -3,7 +3,6 @@ import { Daily } from "../../helpers/types";
 import LineGauge from "./LineGauge";
 import AutomaticForecastIcon from "./customicons/AutomaticForecastIcon";
 const ForecastDay = (props: { data: Daily; index: number }) => {
-  // console.log(props.data);
   const day = datetimeToDay(props.data.dt);
   return (
     <>
