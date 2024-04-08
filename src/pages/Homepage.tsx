@@ -20,7 +20,7 @@ const Homepage = (props: {
   return (
     <>
       <CurrentWeatherBlock
-        className="mt-6 bg-cover bg-rain"
+        className="mt-6 bg-cover bg-neutral-950/35"
         data={props.currentWeather}
       />
       <HourlyForecastBlock

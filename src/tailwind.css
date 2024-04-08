@@ -47,6 +47,16 @@
   }
 }
 
+@keyframes drop {
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100vh);
+  }
+}
+
 .background {
   position: fixed;
   width: 100vw;
