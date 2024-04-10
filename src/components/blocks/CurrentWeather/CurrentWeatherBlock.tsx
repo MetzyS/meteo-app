@@ -15,8 +15,8 @@ const CurrentWeatherBlock = (props: {
     <>
       {props.data && (
         <DefaultBlock className={props.className}>
-          <RainAnimation intensity="normal" />
-          {/* <SnowAnimation /> */}
+          {/* <RainAnimation intensity="normal" /> */}
+          <SnowAnimation />
           <CountryTitle country={props.data.name} />
           <div className="flex justify-between text-slate-100 tracking-wide">
             <div className="flex flex-col gap-1 justify-center">

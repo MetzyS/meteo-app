@@ -9,9 +9,9 @@ const SnowAnimation = () => {
       Math.random() * 100
     ).toString()}) + 50) * - 1px`;
     const opacity = Math.random().toFixed(2).toString();
-    const duration = `calc(${(Math.random() + 3.8)
+    const duration = `calc(${(Math.random() + 0.5)
       .toFixed(2)
-      .toString()} * 1s)`;
+      .toString()} * 4s)`;
     const delay = `calc(${(Math.random() * 2 - 1).toString()}) * 1s`;
     const scale = `scaleY(calc(${Math.random().toFixed(2).toString()} * 1.5))`;
 
