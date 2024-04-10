@@ -8,4 +8,5 @@ export default interface AnimationInterface {
   delay: string;
   scale: string;
   path: string;
+  height?: string;
 }

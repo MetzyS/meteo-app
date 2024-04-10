@@ -13,7 +13,10 @@ const SnowAnimation = () => {
       .toFixed(2)
       .toString()} * 4s)`;
     const delay = `calc(${(Math.random() * 2 - 1).toString()}) * 1s`;
-    const scale = `scaleY(calc(${Math.random().toFixed(2).toString()} * 1.5))`;
+    // const scale = `scaleY(calc(${Math.random().toFixed(2).toString()} * 1.5))`;
+    // const scale = (parseFloat(Math.random().toFixed(2)) * 1.5).toString();
+    const scale = (Math.random() * 1.5).toFixed(2).toString();
+    // console.log(test);
 
     let snowflake = {
       aspect: "xMinYMin",
@@ -30,7 +33,7 @@ const SnowAnimation = () => {
   }
   return (
     <div className="absolute top-0 left-0 w-full h-full rounded-lg overflow-hidden opacity-50 ">
-      {snowflakes.map((snowflake) => (
+      {snowflakes.map((snowflake, index) => (
         <svg
           fill="none"
           preserveAspectRatio={snowflake.aspect}
@@ -45,15 +48,16 @@ const SnowAnimation = () => {
             position: "absolute",
             left: snowflake.left,
             top: snowflake.top,
+            transform: `scale(${snowflake.scale})`,
           }}
+          key={`snowflake-${index}`}
         >
           <path
             stroke="white"
-            stroke-linecap="round"
-            stroke-width="1.5"
+            strokeLinecap="round"
+            strokeWidth="1.5"
             fill="none"
             opacity={snowflake.opacity}
-            transform={snowflake.scale}
             d={snowflake.path}
           />
         </svg>

@@ -57,6 +57,24 @@
   }
 }
 
+@keyframes thunder {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .background {
   position: fixed;
   width: 100vw;
