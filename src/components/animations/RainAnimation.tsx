@@ -1,15 +1,4 @@
-interface Drops {
-  aspect: string;
-  viewBox: string;
-  left: string;
-  top: string;
-  opacity: string;
-  duration: string;
-  delay: string;
-  scale: string;
-  path: string;
-}
-
+import AnimationInterface from "../../helpers/animationType";
 const RainAnimation = (props: { intensity?: string }) => {
   let droplets: number;
   switch (props.intensity) {
@@ -25,7 +14,7 @@ const RainAnimation = (props: { intensity?: string }) => {
     default:
       droplets = 50;
   }
-  let drops: Drops[] = [];
+  let drops: AnimationInterface[] = [];
   for (let i = 0; i < droplets; i++) {
     const left = `calc(${Math.floor(Math.random() * 100).toString()} * 1%)`;
     const top = `calc(${Math.floor(
@@ -62,7 +51,7 @@ const RainAnimation = (props: { intensity?: string }) => {
             animationDelay: drop.delay,
             animationDuration: drop.duration,
             animationIterationCount: "infinite",
-            animationName: "drop",
+            animationName: "weather",
             animationTimingFunction: "linear",
             height: 35,
             position: "absolute",

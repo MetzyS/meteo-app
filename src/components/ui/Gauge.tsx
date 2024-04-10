@@ -22,9 +22,9 @@ const Gauge = (props: {
       id="Layer_1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="25 0 90 90"
-      width={props.width}
-      height={props.height}
-      className={`-rotate-90 -scale-y-100 ${props.className}`}
+      // width={props.width}
+      // height={props.height}
+      className={`-rotate-90 -scale-y-100 ${props.className} aspect-square w-32`}
       data-percent="50"
     >
       <defs>

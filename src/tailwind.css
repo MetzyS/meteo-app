@@ -47,7 +47,7 @@
   }
 }
 
-@keyframes drop {
+@keyframes weather {
   90% {
     opacity: 1;
   }
