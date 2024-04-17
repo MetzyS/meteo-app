@@ -9,4 +9,5 @@ export default interface AnimationInterface {
   scale: string;
   path: string;
   height?: string;
+  inverted?: string;
 }
