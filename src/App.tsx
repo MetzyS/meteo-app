@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Background from "./components/background/Background";
 import Searchbar from "./components/navigation/Searchbar";
 import HomepagePlaceholder from "./pages/HomepagePlaceholder";
 import axios from "axios";
@@ -17,6 +16,11 @@ function App() {
     useState<ForecastWeatherDataType>();
   const [city, setCity] = useState<string>("montpellier");
   const [summary, setSummary] = useState("");
+  const [coord, setCoord] = useState({
+    lat: 43.6,
+    lon: 3.8,
+    city: "montpellier",
+  });
 
   useEffect(() => {
     const apiKey = import.meta.env.VITE_API_KEY_OPENWEATHERMAP;
@@ -27,21 +31,24 @@ function App() {
       );
 
       setCurrentWeather(currentWeatherResult.data);
-      const lat = currentWeatherResult.data.coord.lat;
-      const lon = currentWeatherResult.data.coord.lon;
+      const COORDS = {
+        lat: currentWeatherResult.data.coord.lat,
+        lon: currentWeatherResult.data.coord.lon,
+        city: city,
+      };
 
       const forecastWeatherResult = await axios(
-        `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=${forecastExcludeOptions}&units=metric&lang=fr&appid=${apiKey}`
+        `https://api.openweathermap.org/data/3.0/onecall?lat=${COORDS.lat}&lon=${COORDS.lon}&exclude=${forecastExcludeOptions}&units=metric&lang=fr&appid=${apiKey}`
       );
       setForecastWeather(forecastWeatherResult.data);
       setSummary(forecastWeatherResult.data.daily[0].summary);
+      setCoord(COORDS);
       setIsLoading(false);
     };
     fetchData();
   }, [city]);
   return (
     <main className="min-h-screen p-4 bg-[#161E29]">
-      {/* <Background bg="bg-[#161E29]" /> */}
       <div className="backdrop-blur-md">
         <Searchbar setCity={setCity} />
         {isLoading ? (
@@ -52,6 +59,8 @@ function App() {
               currentWeather={currentWeather}
               forecastWeather={forecastWeather}
               summary={summary}
+              coord={coord}
+              city={city}
             />
           </>
         )}

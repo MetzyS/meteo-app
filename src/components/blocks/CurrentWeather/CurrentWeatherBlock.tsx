@@ -1,6 +1,7 @@
 import { currentDate } from "../../../helpers/dateParser";
 import { CurrentWeatherDataType } from "../../../helpers/types";
 import RainAnimation from "../../animations/RainAnimation";
+import RainCanvas from "../../animations/RainCanvas";
 import SnowAnimation from "../../animations/SnowAnimation";
 import ThunderAnimation from "../../animations/ThunderAnimation";
 import CountryTitle from "../../ui/CountryTitle";
@@ -18,7 +19,8 @@ const CurrentWeatherBlock = (props: {
         <DefaultBlock className={props.className}>
           {/* <RainAnimation intensity="normal" /> */}
           {/* <SnowAnimation /> */}
-          <ThunderAnimation />
+          {/* <ThunderAnimation /> */}
+          <RainCanvas />
           <CountryTitle country={props.data.name} />
           <div className="flex justify-between text-slate-100 tracking-wide">
             <div className="flex flex-col gap-1 justify-center">
