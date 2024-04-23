@@ -35,7 +35,7 @@ const Homepage = (props: {
       />
       <DailyForecastBlock data={props.forecastWeather.daily} />
       <DefaultBlock className="mt-6 bg-cover bg-neutral-950/35">
-        <TestMap coord={props.coord} height="300px" zoom={4} />
+        <TestMap coord={props.coord} height="350px" zoom={4} />
       </DefaultBlock>
     </>
   );
