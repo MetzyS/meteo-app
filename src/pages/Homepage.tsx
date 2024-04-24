@@ -23,18 +23,22 @@ const Homepage = (props: {
   }
   return (
     <>
-      <CurrentWeatherBlock
-        className="mt-6 bg-cover bg-black/25"
-        data={props.currentWeather}
-        weatherId={props.forecastWeather.daily[0].weather[0].id}
-      />
+      {props.forecastWeather && (
+        <CurrentWeatherBlock
+          className="mt-6 bg-cover bg-black/25"
+          data={props.currentWeather}
+          weatherId={props.forecastWeather.daily[0].weather[0].id}
+        />
+      )}
       <HourlyForecastBlock
         data={props.forecastWeather}
         summary={props.summary}
         sunrise={sunrise}
         sunset={sunset}
       />
-      <DailyForecastBlock data={props.forecastWeather.daily} />
+      {props.forecastWeather && (
+        <DailyForecastBlock data={props.forecastWeather.daily} />
+      )}
       <DefaultBlock className="mt-6 bg-cover bg-neutral-950/35">
         <TestMap coord={props.coord} height="350px" zoom={4} />
       </DefaultBlock>

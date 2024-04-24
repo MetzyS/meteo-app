@@ -22,7 +22,7 @@ function App() {
     lon: 3.8,
     city: "montpellier",
   });
-  let bgColor = "";
+  // let bgColor = "";
 
   useEffect(() => {
     const apiKey = import.meta.env.VITE_API_KEY_OPENWEATHERMAP;
@@ -46,9 +46,9 @@ function App() {
       setSummary(forecastWeatherResult.data.daily[0].summary);
       setCoord(COORDS);
       setIsLoading(false);
-      bgColor = themeColor(
-        forecastWeatherResult.data.daily[0].weather[0].id
-      ).background;
+      // bgColor = themeColor(
+      //   forecastWeatherResult.data.daily[0].weather[0].id
+      // ).background;
     };
     fetchData();
   }, [city]);
