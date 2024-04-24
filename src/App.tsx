@@ -7,7 +7,7 @@ import {
   CurrentWeatherDataType,
   ForecastWeatherDataType,
 } from "./helpers/types";
-import themeColor from "./helpers/themeColor";
+// import themeColor from "./helpers/themeColor";
 
 function App() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
