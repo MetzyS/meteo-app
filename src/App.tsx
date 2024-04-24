@@ -7,6 +7,7 @@ import {
   CurrentWeatherDataType,
   ForecastWeatherDataType,
 } from "./helpers/types";
+import Newpage from "./pages/Newpage";
 
 function App() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -21,6 +22,7 @@ function App() {
     lon: 3.8,
     city: "montpellier",
   });
+  const [weatherId, setWeatherId] = useState(0);
 
   useEffect(() => {
     const apiKey = import.meta.env.VITE_API_KEY_OPENWEATHERMAP;
@@ -40,6 +42,7 @@ function App() {
       const forecastWeatherResult = await axios(
         `https://api.openweathermap.org/data/3.0/onecall?lat=${COORDS.lat}&lon=${COORDS.lon}&exclude=${forecastExcludeOptions}&units=metric&lang=fr&appid=${apiKey}`
       );
+      setWeatherId(forecastWeatherResult.data.daily[0].weather[0].id);
       setForecastWeather(forecastWeatherResult.data);
       setSummary(forecastWeatherResult.data.daily[0].summary);
       setCoord(COORDS);
@@ -48,20 +51,22 @@ function App() {
     fetchData();
   }, [city]);
   return (
-    <main className="min-h-screen p-4 bg-[#161E29]">
+    // <main className="min-h-screen p-4 bg-[#161E29]">
+    <main className="min-h-screen p-4">
       <div className="backdrop-blur-md">
         <Searchbar setCity={setCity} />
         {isLoading ? (
           <HomepagePlaceholder />
         ) : (
           <>
-            <Homepage
+            {/* <Homepage
               currentWeather={currentWeather}
               forecastWeather={forecastWeather}
               summary={summary}
               coord={coord}
               city={city}
-            />
+            /> */}
+            <Newpage weatherId={weatherId} />
           </>
         )}
       </div>
