@@ -1,9 +1,6 @@
 import { currentDate } from "../../../helpers/dateParser";
+import themeColor from "../../../helpers/themeColor";
 import { CurrentWeatherDataType } from "../../../helpers/types";
-import RainAnimation from "../../animations/RainAnimation";
-import RainCanvas from "../../animations/RainCanvas";
-import SnowAnimation from "../../animations/SnowAnimation";
-import ThunderAnimation from "../../animations/ThunderAnimation";
 import CountryTitle from "../../ui/CountryTitle";
 import DefaultBlock from "../../ui/DefaultBlock";
 import Gauge from "../../ui/Gauge";
@@ -11,8 +8,13 @@ import Gauge from "../../ui/Gauge";
 const CurrentWeatherBlock = (props: {
   className: string;
   data: CurrentWeatherDataType | undefined;
+  weatherId?: number | undefined;
 }) => {
   const date = currentDate();
+  let weatherAnimation = <></>;
+  if (props.weatherId) {
+    weatherAnimation = themeColor(props.weatherId).weatherAnimation;
+  }
   return (
     <>
       {props.data && (
@@ -20,7 +22,7 @@ const CurrentWeatherBlock = (props: {
           {/* <RainAnimation intensity="normal" /> */}
           {/* <SnowAnimation /> */}
           {/* <ThunderAnimation /> */}
-          <RainCanvas />
+          {weatherAnimation}
           <CountryTitle country={props.data.name} />
           <div className="flex justify-between text-slate-100 tracking-wide">
             <div className="flex flex-col gap-1 justify-center">

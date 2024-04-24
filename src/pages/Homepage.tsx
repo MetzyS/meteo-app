@@ -24,8 +24,9 @@ const Homepage = (props: {
   return (
     <>
       <CurrentWeatherBlock
-        className="mt-6 bg-cover bg-neutral-950/35"
+        className="mt-6 bg-cover bg-black/25"
         data={props.currentWeather}
+        weatherId={props.forecastWeather.daily[0].weather[0].id}
       />
       <HourlyForecastBlock
         data={props.forecastWeather}
