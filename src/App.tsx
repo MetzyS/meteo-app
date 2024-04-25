@@ -55,7 +55,7 @@ function App() {
   return (
     <main className="min-h-screen p-4 bg-[#161E29] flex justify-center">
       {/* <main className={`min-h-screen p-4 ${bgColor}`}> */}
-      <div className="backdrop-blur-md max-w-[1024px]">
+      <div className="backdrop-blur-md min-w-[320px] max-w-[1024px]">
         <Searchbar setCity={setCity} />
         {isLoading ? (
           <HomepagePlaceholder />
