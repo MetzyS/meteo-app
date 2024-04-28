@@ -7,7 +7,6 @@ import {
   CurrentWeatherDataType,
   ForecastWeatherDataType,
 } from "./helpers/types";
-// import themeColor from "./helpers/themeColor";
 
 function App() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -22,7 +21,6 @@ function App() {
     lon: 3.8,
     city: "montpellier",
   });
-  // let bgColor = "";
 
   useEffect(() => {
     const apiKey = import.meta.env.VITE_API_KEY_OPENWEATHERMAP;
@@ -46,15 +44,11 @@ function App() {
       setSummary(forecastWeatherResult.data.daily[0].summary);
       setCoord(COORDS);
       setIsLoading(false);
-      // bgColor = themeColor(
-      //   forecastWeatherResult.data.daily[0].weather[0].id
-      // ).background;
     };
     fetchData();
   }, [city]);
   return (
     <main className="min-h-screen p-4 bg-[#161E29] flex justify-center">
-      {/* <main className={`min-h-screen p-4 ${bgColor}`}> */}
       <div className="backdrop-blur-md min-w-[320px] max-w-[1024px]">
         <Searchbar setCity={setCity} />
         {isLoading ? (

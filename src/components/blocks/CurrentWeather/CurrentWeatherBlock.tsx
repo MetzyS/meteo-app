@@ -19,9 +19,6 @@ const CurrentWeatherBlock = (props: {
     <>
       {props.data && (
         <DefaultBlock className={props.className}>
-          {/* <RainAnimation intensity="normal" /> */}
-          {/* <SnowAnimation /> */}
-          {/* <ThunderAnimation /> */}
           {weatherAnimation}
           <CountryTitle country={props.data.name} />
           <div className="flex justify-between text-slate-100 tracking-wide">
@@ -49,12 +46,7 @@ const CurrentWeatherBlock = (props: {
               <p className="text-sm font-light">{date}</p>
             </div>
             <div className="flex items-end relative">
-              <Gauge
-                percent={props.data.main.humidity}
-                // width={160}
-                // height={160}
-                className="size-36"
-              />
+              <Gauge percent={props.data.main.humidity} className="size-36" />
               <span className="absolute mx-auto top-[50%] left-[50%] -translate-x-1/2 text-sm text-center">
                 <span className="text-xl font-bold">
                   {props.data.main.humidity + "%"}

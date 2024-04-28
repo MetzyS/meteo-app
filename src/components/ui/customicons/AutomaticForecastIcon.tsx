@@ -42,7 +42,6 @@ const AutomaticForecastIcon = (props: {
       break;
     case weatherId >= 300 && weatherId <= 321:
       // Bruine (pluie fine)
-      // icon = <Rain className={`${iconColor} ${iconSize}`} />;
       icon = (
         <LightRain
           size={iconSize}
@@ -60,7 +59,6 @@ const AutomaticForecastIcon = (props: {
           rainColor={rainColor}
         />
       );
-      // icon = <Rain className={`${iconDarkColor} ${iconSize}`} />;
       icon = (
         <HeavyRain
           size={iconSize}
@@ -126,7 +124,6 @@ const AutomaticForecastIcon = (props: {
       // Nuages
       if (weatherId == 801) {
         // Peu de nuages (11-25%)
-        // icon = <FewClouds className={`${iconColor} ${iconSize}`} />;
         icon = (
           <SunCloud
             size={iconSize}

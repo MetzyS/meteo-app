@@ -18,7 +18,6 @@ const TestMap = (props: {
 
   useEffect(() => {
     setBuffering(true);
-    // Timeout pour forcer RMap a re/render.. pas optimal
     setCoords({ origin: [props.coord.lon, props.coord.lat] });
     setTimeout(() => {
       setBuffering(false);
